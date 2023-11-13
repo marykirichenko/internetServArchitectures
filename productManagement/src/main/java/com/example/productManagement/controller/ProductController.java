@@ -45,7 +45,7 @@ public class ProductController {
 
     @PostMapping("/categoryNotifications")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> handleNotificationFromCategoryContorller(@RequestParam MultiValueMap<String, String> notification) {
+    public ResponseEntity<String> handleNotificationFromCategoryController(@RequestParam MultiValueMap<String, String> notification) {
         String categoryName = notification.getFirst("categoryName");
         String action = notification.getFirst("action");
         System.out.println("Received notification: Category " + categoryName + " - Action: " + action);
@@ -117,7 +117,7 @@ public class ProductController {
         SkinType skinType = skinTypeService.findByName(product.getSkinTypeName())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Skin type not found"));
 
-        if (productService.isProductUnique(product.getName(), category, brand, skinType)) {
+        if (productService.isProductUnique(product.getName(), category, brand, skinType, product.getDescription(), product.getQuantity(), product.getPrice())) {
             productService.save(convertToEntity(product));
         } else {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Product already exists");
@@ -154,6 +154,6 @@ public class ProductController {
         Category category = categoryService.findByName(product.getCategoryName()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Category not found"));
         Brand brand = brandService.findByName(product.getBrandName()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Brand not found"));
         SkinType skinType = skinTypeService.findByName(product.getSkinTypeName()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Skin type not found"));
-        return new Product(product.getName(), product.getPrice(), category, brand, skinType);
+        return new Product(product.getName(), product.getPrice(), category, brand, skinType, product.getQuantity(), product.getImgLink(), product.getDescription());
     }
 }

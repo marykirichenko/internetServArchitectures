@@ -54,7 +54,7 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public boolean isProductUnique(String name, Category category, Brand brand, SkinType skinType) {
-        return !productRepository.existsByNameAndCategoryAndBrandAndSkinType(name, category, brand, skinType);
+    public boolean isProductUnique(String name, Category category, Brand brand, SkinType skinType, String description, int quantity, int price) {
+        return !productRepository.existsByNameAndCategoryAndBrandAndSkinType(name, category, brand, skinType, description, quantity, price);
     }
 }

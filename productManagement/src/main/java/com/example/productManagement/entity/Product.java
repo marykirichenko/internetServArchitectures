@@ -1,6 +1,7 @@
 package com.example.productManagement.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.*;
 
 import java.io.Serializable;
@@ -28,12 +29,23 @@ public class Product implements Comparable<Product>, Serializable {
     @JoinColumn(name="skin_type_id", nullable = false)
     private SkinType skinType;
 
-    public Product(String name, int price, Category category, Brand brand, SkinType skinType){
+    @Min(value = 1, message = "Code must be greater than 0")
+    @Column(nullable = false)
+    private int quantity = 0;
+    @Column(nullable = false)
+    private String imgLink;
+    @Column(nullable = false)
+    private String description;
+
+    public Product(String name, int price, Category category, Brand brand, SkinType skinType,int quantity, String imgLink, String description){
         this.name = name;
         this.price = price;
         this.category = category;
         this.brand = brand;
         this.skinType = skinType;
+        this.imgLink = imgLink;
+        this.description = description;
+        this.quantity = quantity;
     }
 
 
@@ -43,6 +55,6 @@ public class Product implements Comparable<Product>, Serializable {
     }
     @Override
     public String toString(){
-        return "UUID "+ uuid+ "Name: " + this.name + "Category Id"+ this.category.getUuid()+" Price: " + this.price +  " Brand: " + this.brand + " Skin type: " + this.skinType;
+        return "UUID "+ uuid+ "Name: " + this.name + "Category Id"+ this.category.getUuid()+" Price: " + this.price +  " Brand: " + this.brand + " Skin type: " + this.skinType + " Quantity: " + this.quantity + " Image link: " + this.imgLink + " Description: " + this.description;
     }
 }

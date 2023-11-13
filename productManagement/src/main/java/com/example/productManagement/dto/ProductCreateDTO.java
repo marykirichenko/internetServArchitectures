@@ -23,12 +23,22 @@ public class ProductCreateDTO {
     private String brandName;
     @NotBlank(message = "Skin type name cannot be blank")
     private String skinTypeName;
+    @NotBlank(message = "Image link cannot be blank")
+    private String imgLink;
+    @NotBlank(message = "Description cannot be blank")
+    private String description;
+    @Min(value=1, message = "Quantity cannot be blank")
+    private int quantity;
 
-    public ProductCreateDTO(String name, int price, String categoryName, String brandName, String skinTypeName) {
+
+    public ProductCreateDTO(String name, int price, String categoryName, String brandName, String skinTypeName, String imgLink, String description, int quantity) {
         this.name = name;
         this.price = price;
         this.categoryName = categoryName;
         this.brandName = brandName;
         this.skinTypeName = skinTypeName;
+        this.imgLink = imgLink;
+        this.description = description;
+        this.quantity = quantity;
     }
 }

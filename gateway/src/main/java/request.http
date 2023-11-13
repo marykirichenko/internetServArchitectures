@@ -1,0 +1,365 @@
+## PRODUCTS
+##Get all products
+#GET http://localhost:8080/api/product/products
+
+## GET request to retrieve a product by name
+#GET http://localhost:8080/api/product/products/Face wash
+#Content-Type: application/json
+
+## GET request to retrieve a product by name (non-existent product)
+#GET http://localhost:8080/api/product/products/Facewash
+#Content-Type: application/json
+
+## GET request to retrieve products by price
+#GET http://localhost:8080/api/product/products/price/200
+
+## GET request to retrieve products by price (no products with this price)
+#GET http://localhost:8080/api/product/products/price/121
+
+## GET request to retrieve products from category
+#GET http://localhost:8080/api/product/products/category/Face Products
+
+## GET request to retrieve products from category(non-existent category)
+#GET http://localhost:8080/api/product/products/category/121
+
+## GET request to retrieve products from brand
+#GET http://localhost:8080/api/product/products/brand/Brand1
+
+## GET request to retrieve products from brand(non-existent brand)
+#GET http://localhost:8080/api/product/products/brand/121
+
+## GET request to retrieve products by skin type
+#GET http://localhost:8080/api/product/products/skinType/OILY
+
+## GET request to retrieve products by skin type (non-existent skin type)
+#GET http://localhost:8080/api/product/products/skinType/121
+
+
+## POST request to create a new product with non-existent category
+#POST http://localhost:8080/api/product/products
+#Content-Type: application/json
+#
+#{
+#  "name": "New Product",
+#  "price": 20,
+#  "categoryName": "Non-Existent Category",
+#  "brandName": "Brand1",
+#  "skinTypeName": "OILY"
+#}
+
+##POST request to create a new product with non-existent brand
+#POST http://localhost:8080/api/product/products
+#Content-Type: application/json
+#
+#{
+#  "name": "New Product",
+#  "price": 20,
+#  "categoryName": "Face Products",
+#  "brandName": "Non-existent brand",
+#  "skinTypeName": "OILY"
+#}
+
+## POST request to create a new product with non-existent skin type
+#POST http://localhost:8080/api/product/products
+#Content-Type: application/json
+#
+#{
+#  "name": "New Product",
+#  "price": 20,
+#  "categoryName": "Face Products",
+#  "brandName": "Brand1",
+#  "skinTypeName": "Non-existent skin type"
+#}
+
+
+## POST request to create a new product
+#POST http://localhost:8080/api/product/products
+#Content-Type: application/json
+#
+#{
+#"name": "New Product1",
+#"price": 20,
+#"categoryName": "Face Products",
+#"brandName": "Brand1",
+#"skinTypeName": "OILY",
+#"quantity": 10,
+#"description": "New Product1 description",
+#"imgLink": "New Product1 image"
+#}
+
+
+## POST request to create indentical new product
+#POST http://localhost:8080/api/product/products
+#Content-Type: application/json
+#
+#{
+#"name": "New Product1",
+#"price": 20,
+#"categoryName": "Face Products",
+#"brandName": "Brand1",
+#"skinTypeName": "OILY",
+#  "quantity": 10,
+#  "description": "New Product1 description",
+#  "imgLink": "New Product1 image"
+#}
+
+## GET request to get a product by name
+#GET http://localhost:8080/api/product/products/New Product1
+#Content-Type: application/json
+
+# PUT request to update an existing product
+#PUT http://localhost:8080/api/product/products/1a19353c-eb66-4c34-8d62-6e3a16625c3a
+#Content-Type: application/json
+#
+#{
+#  "name": "new name",
+#  "price": 25,
+#  "categoryName": "Face Products",
+#  "brandName": "Brand1",
+#  "skinTypeName": "OILY"
+#  "quantity": 10,
+#  "description": "New Product1 description",
+#  "image": "New Product1 image"
+#}
+
+## GET request to get a product by NEW name
+#GET http://localhost:8080/api/product/products/new name
+#Content-Type: application/json
+
+## PUT request to update an existing product(Non-existent category)
+#PUT http://localhost:8080/api/product/products/99ceca95-8424-413c-b83a-85f475aae521
+#Content-Type: application/json
+#
+#{
+#  "name": "new name",
+#  "price": 25,
+#  "categoryName": "Face Products1",
+#  "brandName": "Brand1",
+#  "skinTypeName": "OILY"
+
+#}
+
+## PUT request to update an existing product(Non-existent brand)
+#PUT http://localhost:8080/api/product/products/99ceca95-8424-413c-b83a-85f475aae521
+#Content-Type: application/json
+#
+#{
+#  "name": "new name",
+#  "price": 25,
+#  "categoryName": "Face Products",
+#  "brandName": "Brand11",
+#  "skinTypeName": "OILY"
+#}
+
+## PUT request to update an existing product(Non-existent skin type)
+#PUT http://localhost:8080/api/product/products/99ceca95-8424-413c-b83a-85f475aae521
+#Content-Type: application/json
+#
+#{
+#  "name": "new name",
+#  "price": 25,
+#  "categoryName": "Face Products",
+#  "brandName": "Brand1",
+#  "skinTypeName": "OILY1"
+#}
+
+## DELETE request to delete a product
+#DELETE http://localhost:8080/api/product/products/1a19353c-eb66-4c34-8d62-6e3a16625c3a
+
+## DELETE request to delete a product (non-existent product)
+#DELETE http://localhost:8080/api/products/99ceca95-8424-413c-b83a-85f475aae521
+
+
+## CATEGORIES
+#
+## GET request to retrieve all categories
+#GET http://localhost:8080/api/categories
+
+## GET request to retrieve a category by name
+#GET http://localhost:8080/api/categories/Face Products
+
+## GET request to retrieve a category by name (non-existent category)
+#GET http://localhost:8080/api/categories/Face Products1
+
+## POST request to create a new category
+#POST http://localhost:8080/api/categories
+#Content-Type: application/json
+#
+#{
+#  "name": "New Category",
+#  "code": 4
+#}
+
+## POST request to create a new category (identical category)
+#POST http://localhost:8080/api/categories
+#Content-Type: application/json
+#
+#{
+#  "name": "New Category",
+#  "code": 4
+#}
+
+## POST request to create a new category (no name and code field)
+#POST http://localhost:8080/api/categories
+#Content-Type: application/json
+#
+#{
+#  "name2": "New Category",
+#  "code2": 4
+#}
+
+## PUT request to update an existing category
+#PUT http://localhost:8080/api/categories/c76a303e-c5f9-4bca-9fbb-8bc11910fba1
+#Content-Type: application/json
+#
+#{
+#  "name": "New Category1",
+#  "code": 4
+#}
+
+## PUT request to update an existing category (non-existent category)
+#PUT http://localhost:8080/api/categories/99ceca95-8424-413c-b83a-85f475aae521
+#Content-Type: application/json
+#
+#{
+#  "name": "New Category1",
+#  "code": 4
+#}
+
+## DELETE request to delete a category
+#DELETE http://localhost:8080/api/categories/c76a303e-c5f9-4bca-9fbb-8bc11910fba1
+
+## DELETE request to delete a category (non-existent category)
+#DELETE http://localhost:8080/api/categories/99ceca95-8424-413c-b83a-85f475aae521
+
+
+## BRANDS
+
+## GET request to retrieve all brands
+#GET http://localhost:8080/api/product/brands
+
+## GET request to retrieve a brand by name
+#GET http://localhost:8080/api/product/brands/Brand1
+
+## GET request to retrieve a brand by name (non-existent brand)
+#GET http://localhost:8080/api/product/brands/Brand11
+
+## GET request to get all products from a brand
+#GET http://localhost:8080/api/product/brands/Brand1/products
+
+## GET request to get all products from a brand (non-existent brand)
+#GET http://localhost:8080/api/product/brands/Brand11/products
+
+## POST request to create a new brand
+#POST http://localhost:8080/api/product/brands
+#Content-Type: application/json
+#
+#{
+#  "name": "New Brand"
+#}
+
+## POST request to create a new brand (identical brand)
+#POST http://localhost:8080/api/product/brands
+#Content-Type: application/json
+#
+#{
+#  "name": "New Brand"
+#}
+
+## POST request to create a new brand (no name)
+#POST http://localhost:8080/api/product/brands
+#Content-Type: application/json
+#
+#{
+#  "name2": "New Brand"
+#}
+
+## PUT request to update an existing brand
+#PUT http://localhost:8080/api/product/brands/22378158-d0ca-4b47-9153-1976d18422e7
+#Content-Type: application/json
+#
+#{
+#  "name": "New Brand2 NAME"
+#}
+
+## PUT request to update an existing brand (non-existent brand)
+#PUT http://localhost:8080/api/product/brands/99ceca95-8424-413c-b83a-85f475aae521
+#Content-Type: application/json
+#
+#{
+#  "name": "New Brand1"
+#}
+
+## DELETE request to delete a brand
+#DELETE http://localhost:8080/api/product/brands/22378158-d0ca-4b47-9153-1976d18422e7
+
+## DELETE request to delete a brand (non-existent brand)
+#DELETE http://localhost:8080/api/product/brands/99ceca95-8424-413c-b83a-85f475aae521
+
+
+##SKIN TYPES
+
+## GET request to retrieve all skin types
+#GET http://localhost:8080/api/product/skinTypes
+
+## GET request to retrieve a skin type by name
+#GET http://localhost:8080/api/product/skinTypes/DEHYDRATED
+
+## GET request to retrieve a skin type by name (non-existent skin type)
+#GET http://localhost:8080/api/product/skinTypes/OILY1
+
+## GET request to get all products from a skin type
+#GET http://localhost:8080/api/product/skinTypes/DEHYDRATED/products
+
+## GET request to get all products from a skin type (non-existent skin type)
+#GET http://localhost:8080/api/product/skinTypes/OILYQ/products
+
+## POST request to create a new skin type
+#POST http://localhost:8080/api/product/skinTypes
+#Content-Type: application/json
+#
+#{
+#  "name": "New Skin Type"
+#}
+
+## POST request to create a new skin type (identical skin type)
+#POST http://localhost:8080/api/product/skinTypes
+#Content-Type: application/json
+#
+#{
+#  "name": "New Skin Type"
+#}
+
+## POST request to create a new skin type (no name)
+#POST http://localhost:8080/api/product/skinTypes
+#Content-Type: application/json
+#
+#{
+#  "name2": "New Skin Type"
+#}
+
+## PUT request to update an existing skin type
+#PUT http://localhost:8080/api/product/skinTypes/ad631e86-1885-4494-a475-15b2b3ccbb84
+#Content-Type: application/json
+#
+#{
+#  "name": "New Skin Type2 NAME"
+#}
+
+## PUT request to update an existing skin type (non-existent skin type)
+#PUT http://localhost:8080/api/product/skinTypes/99ceca95-8424-413c-b83a-85f475aae521
+#Content-Type: application/json
+#
+#{
+#  "name": "New Skin Type1"
+#}
+
+## DELETE request to delete a skin type
+#DELETE http://localhost:8080/api/product/skinTypes/58c7837a-e7c6-4e1a-9b1c-1c3b9b9a48d9
+
+## DELETE request to delete a skin type (non-existent skin type)
+#DELETE http://localhost:8080/api/product/skinTypes/99ceca95-8424-413c-b83a-85f475aae521
+
+
+
+

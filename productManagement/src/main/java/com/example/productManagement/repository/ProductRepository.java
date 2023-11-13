@@ -21,16 +21,20 @@ public interface ProductRepository extends JpaRepository<Product, UUID>{
     @Query("SELECT p FROM Product p WHERE p.brand.name = :brandName")
     Optional<List<Product>> findByBrandName(@Param("brandName") String brandName);
 
+
     @Query("SELECT p FROM Product p WHERE p.skinType.name = :skinTypeName")
     Optional<List<Product>> findBySkinTypeName(@Param("skinTypeName") String skinTypeName);
 
     @Query("SELECT CASE WHEN COUNT(p) > 0 THEN true ELSE false END FROM Product p " +
-            "WHERE p.name = :name AND p.category.name = :category AND p.brand = :brand AND p.skinType = :skinType")
+            "WHERE p.name = :name AND p.category = :category AND p.brand = :brand AND p.skinType = :skinType AND p.description = :description AND p.quantity = :quantity AND p.price = :price")
     boolean existsByNameAndCategoryAndBrandAndSkinType(
             @Param("name") String name,
             @Param("category")Category category,
             @Param("brand") Brand brand,
-            @Param("skinType") SkinType skinType
+            @Param("skinType") SkinType skinType,
+            @Param("description") String description,
+            @Param("quantity") int quantity,
+            @Param("price") int price
     );
 
     @Transactional

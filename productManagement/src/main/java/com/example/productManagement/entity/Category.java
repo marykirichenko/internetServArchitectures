@@ -28,6 +28,12 @@ public class Category implements Serializable {
         this.name = name;
         this.products = new ArrayList<>();
     }
-
+    @Override
+    public String toString() {
+        return "Category{" +
+                "uuid=" + uuid +
+                ", name='" + name + '\'' +
+                '}';
+    }
 
 }
